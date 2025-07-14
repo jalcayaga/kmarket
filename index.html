@@ -1,241 +1,758 @@
-<div class="tiktok-section">
-        <h3>📱 Síguenos en TikTok</h3>
-        <p>Conoce más sobre nuestros productos coreanos:</p>
-        <a href="https://www.tiktok.com/@emporiokmarketqui" target="_blank">@emporiokmarketqui</a>
-    </div>
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Propuesta Técnica de Subred Ingeniería para Emporio K Market</title>
+    <style>
+      /* Definir variables CSS basadas en los colores del logo de Emporio K Market con una estética K-pop */
+      :root {
+        --color-primary: #2d4a5d; /* Azul oscuro del logo K Market */
+        --color-secondary: #f5f0e1; /* Crema del fondo del logo K Market */
+        --color-light-bg: #eaecef; /* Un gris muy claro para fondos generales si se necesita */
+        --color-dark-text: #333333; /* Texto oscuro general */
+        --color-highlight: #f77fbe; /* Un rosa vibrante como acento K-pop, complementa el azul */
+        --color-gradient-start: #a7d9ed; /* Un azul pastel para degradados, más "onda Kpop" */
+        --color-gradient-end: #e1bee7; /* Un lila suave para degradados, también Kpop */
+        /* --header-bg: rgba(45, 74, 93, 0.85); /* Azul primario con ligera transparencia para el header */
+      }
 
-    <div class="section">
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Arial", sans-serif;
+        background: linear-gradient(
+          135deg,
+          var(--color-gradient-start) 0%,
+          var(--color-gradient-end) 100%
+        );
+        color: var(--color-dark-text);
+        line-height: 1.6;
+        padding-bottom: 60px;
+        position: relative;
+        min-height: 100vh;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      .header {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 15px 20px;
+        margin-bottom: 20px;
+        background: var(--color-light-bg); /* Fondo gris claro para el header */
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        position: relative;
+      }
+
+      .header-logo-left,
+      .header-logo-right {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        max-height: 60px;
+        width: auto;
+      }
+
+      .header-logo-left {
+        left: 20px;
+        border-radius: 50%;
+        background-color: var(--color-secondary);
+        padding: 5px;
+      }
+
+      .header-logo-right {
+        right: 20px;
+      }
+
+      .header-content {
+        text-align: center;
+        color: var(
+          --color-primary
+        ); /* Color del texto del header, que combine con fondo gris claro */
+        margin: 0 100px; /* Margen para dejar espacio para los logos */
+      }
+
+      .header-title {
+        font-size: 2.2em;
+        margin-bottom: 5px;
+        /* text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); */ /* Eliminado para fondo claro */
+      }
+
+      .header-subtitle {
+        font-size: 1.1em;
+        opacity: 0.9;
+      }
+
+      .section {
+        background: var(--color-secondary);
+        margin: 20px 0;
+        padding: 25px;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+      }
+
+      .section:hover {
+        transform: translateY(-5px);
+      }
+
+      .section h2 {
+        color: var(--color-primary);
+        margin-bottom: 20px;
+        font-size: 1.8em;
+        border-bottom: 3px solid rgba(var(--color-primary), 0.2);
+        padding-bottom: 10px;
+      }
+
+      .flow-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        margin: 20px 0;
+      }
+
+      .flow-item {
+        background: var(
+          --color-primary
+        ); /* Usar solo el azul oscuro para los bloques ahora */
+        color: white;
+        padding: 20px;
+        border-radius: 15px;
+        text-align: center;
+        position: relative;
+        transition: all 0.3s ease;
+      }
+
+      .flow-item:hover {
+        transform: scale(1.03);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+      }
+
+      .flow-item h3 {
+        font-size: 1.4em;
+        margin-bottom: 15px;
+      }
+
+      .flow-item ul {
+        list-style: none;
+        text-align: left;
+      }
+
+      .flow-item li {
+        margin: 8px 0;
+        padding-left: 20px;
+        position: relative;
+      }
+
+      .flow-item li:before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: var(--color-highlight);
+        font-weight: bold;
+      }
+
+      .phase-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 30px 0;
+        flex-wrap: wrap;
+      }
+
+      .phase {
+        background: linear-gradient(
+          135deg,
+          var(--color-gradient-start) 0%,
+          var(--color-gradient-end) 100%
+        );
+        color: var(--color-dark-text);
+        padding: 20px;
+        border-radius: 15px;
+        min-width: 200px;
+        margin: 10px;
+        text-align: center;
+        position: relative;
+        flex: 1;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .phase::after {
+        content: "→";
+        position: absolute;
+        right: -25px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 2em;
+        color: var(--color-primary);
+      }
+
+      .phase:last-child::after {
+        display: none;
+      }
+
+      .phase h3 {
+        font-size: 1.2em;
+        margin-bottom: 10px;
+      }
+
+      .phase p {
+        font-size: 0.9em;
+        opacity: 0.9;
+      }
+
+      .tech-stack {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 15px;
+        margin: 20px 0;
+      }
+
+      .tech-item {
+        background: var(--color-primary);
+        color: white;
+        padding: 15px;
+        border-radius: 10px;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .benefits {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin: 20px 0;
+      }
+
+      .benefit-column {
+        background: var(--color-secondary);
+        padding: 20px;
+        border-radius: 10px;
+        border-left: 5px solid var(--color-primary);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+      }
+
+      .benefit-column h3 {
+        color: var(--color-primary);
+        margin-bottom: 15px;
+      }
+
+      .benefit-column ul {
+        list-style: none;
+      }
+
+      .benefit-column li {
+        margin: 10px 0;
+        padding-left: 25px;
+        position: relative;
+      }
+
+      .benefit-column li:before {
+        content: "🚀";
+        position: absolute;
+        left: 0;
+      }
+
+      .cost-section {
+        background: var(--color-primary);
+        color: white;
+        padding: 25px;
+        border-radius: 15px;
+        margin: 20px 0;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      .cost-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+        margin: 15px 0;
+      }
+
+      .cost-item {
+        background: rgba(255, 255, 255, 0.15);
+        padding: 15px;
+        border-radius: 10px;
+        backdrop-filter: blur(5px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .highlight {
+        background: var(--color-highlight);
+        color: var(--color-dark-text);
+        padding: 20px;
+        border-radius: 15px;
+        margin: 20px 0;
+        text-align: center;
+        font-weight: bold;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .korean-accent {
+        color: var(--color-dark-text);
+        font-weight: bold;
+        text-shadow: none;
+      }
+      .footer {
+        background-color: var(--color-primary);
+        color: white;
+        text-align: center;
+        padding: 15px;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        box-sizing: border-box;
+        font-size: 0.9em;
+      }
+
+      @media (max-width: 768px) {
+        .header {
+          flex-direction: column;
+          text-align: center;
+        }
+        .header-logo-left,
+        .header-logo-right {
+          position: static;
+          transform: none;
+          margin: 10px auto;
+        }
+        .header-content {
+          margin: 0;
+        }
+        .header-title {
+          margin-bottom: 5px;
+        }
+        .phase-container {
+          flex-direction: column;
+        }
+
+        .phase::after {
+          content: "↓";
+          right: 50%;
+          bottom: -25px;
+          top: auto;
+          transform: translateX(50%);
+        }
+
+        .benefits {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* Estilos específicos para impresión */
+      @media print {
+        body {
+          background: white;
+          -webkit-print-color-adjust: exact;
+          print-color-adjust: exact;
+          color: black;
+        }
+
+        .section,
+        .cost-section,
+        .highlight:nth-of-type(2) {
+          page-break-before: always;
+          margin-top: 0;
+          padding-top: 20px;
+        }
+
+        .header,
+        .flow-item,
+        .phase,
+        .tech-item,
+        .benefit-column,
+        .cost-item,
+        .highlight,
+        .footer {
+          page-break-inside: avoid;
+          box-shadow: none !important;
+          border-radius: 0 !important;
+        }
+
+        .footer {
+          position: static;
+          padding: 15px 0;
+        }
+
+        .header {
+          background: white !important; /* Fondo blanco en impresión también */
+          color: var(
+            --color-primary
+          ) !important; /* Texto oscuro en impresión */
+          padding: 10px;
+          flex-direction: row;
+          justify-content: space-between; /* Distribuir logos a los extremos */
+          align-items: center;
+        }
+
+        .header-logo-left,
+        .header-logo-right {
+          position: static;
+          transform: none;
+          max-height: 40px;
+          margin: 0 10px;
+        }
+
+        .header-content {
+          text-align: center; /* Centrar el título nuevamente */
+          margin: 0 80px; /* Ajustar margen */
+        }
+
+        .header-subtitle {
+          color: var(
+            --color-primary
+          ) !important; /* Texto oscuro en impresión */
+        }
+
+        .flow-item,
+        .phase,
+        .tech-item,
+        .cost-item {
+          background: #f0f0f0 !important;
+          color: var(--color-dark-text) !important;
+          border: 1px solid #ddd;
+        }
+
+        .flow-item h3,
+        .phase h3,
+        .tech-item h3,
+        .cost-item h3 {
+          color: var(--color-primary) !important;
+        }
+
+        .flow-item li:before {
+          color: #008000 !important;
+        }
+
+        .korean-accent {
+          color: black !important;
+          background: none !important;
+        }
+
+        .highlight {
+          background: #ffffcc !important;
+          color: black !important;
+          border: 1px solid #ccc;
+        }
+
+        .footer {
+          background-color: var(--color-primary) !important;
+          color: white !important;
+          padding: 10px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <img
+          src="logo.webp"
+          alt="Emporio K Market Logo"
+          class="header-logo-left"
+        />
+        <div class="header-content">
+          <h1 class="header-title">Emporio K Market</h1>
+          <p class="header-subtitle">
+            Solución Integral: E-commerce + POS + Facturación Digital
+          </p>
+        </div>
+        <img
+          src="logosubred.png"
+          alt="Subred Ingeniería Logo"
+          class="header-logo-right"
+        />
+      </div>
+
+      <div class="section">
         <h2>🎯 Situación Actual del Negocio</h2>
         <div class="flow-container">
-            <div class="flow-item">
-                <h3>🏪 Emporio Consolidado</h3>
-                <ul>
-                    <li>Ubicación estratégica en Quilpué</li>
-                    <li>Amplia variedad de productos coreanos</li>
-                    <li>Clientes fieles y flujo constante</li>
-                    <li>Presencia activa en redes sociales</li>
-                    <li>Reconocimiento local del mercado coreano</li>
-                </ul>
-            </div>
-            <div class="flow-item">
-                <h3>🛍️ Productos Destacados</h3>
-                <ul>
-                    <li>Ramen y fideos instantáneos</li>
-                    <li>Snacks y dulces coreanos</li>
-                    <li>Bebidas tradicionales y modernas</li>
-                    <li>Productos de <span class="korean-accent">BTS</span> y K-pop</li>
-                    <li>Novedades semanales importadas</li>
-                </ul>
-            </div>
-            <div class="flow-item">
-                <h3>🎯 Oportunidades de Crecimiento</h3>
-                <ul>
-                    <li>Expandir ventas a toda la región</li>
-                    <li>Llegar a fanáticos del K-pop nacional</li>
-                    <li>Automatizar procesos de venta</li>
-                    <li>Modernizar la facturación</li>
-                    <li>Optimizar control de inventario</li>
-                </ul>
-            </div>
+          <div class="flow-item">
+            <h3>🏪 Emporio Consolidado</h3>
+            <ul>
+              <li>Ubicación estratégica en Quilpué</li>
+              <li>Amplia variedad de productos coreanos</li>
+              <li>Clientes fieles y flujo constante</li>
+              <li>Presencia activa en redes sociales</li>
+              <li>Reconocimiento local del mercado coreano</li>
+            </ul>
+          </div>
+          <div class="flow-item">
+            <h3>🛍️ Productos Destacados</h3>
+            <ul>
+              <li>Ramen y fideos instantáneos</li>
+              <li>Snacks y dulces coreanos</li>
+              <li>Bebidas tradicionales y modernas</li>
+              <li>
+                Productos de <span class="korean-accent">BTS</span> y K-pop
+              </li>
+              <li>Novedades semanales importadas</li>
+            </ul>
+          </div>
+          <div class="flow-item">
+            <h3>🎯 Oportunidades de Crecimiento</h3>
+            <ul>
+              <li>Expandir ventas a toda la región</li>
+              <li>Llegar a fanáticos del K-pop nacional</li>
+              <li>Automatizar procesos de venta</li>
+              <li>Modernizar la facturación</li>
+              <li>Optimizar control de inventario</li>
+            </ul>
+          </div>
         </div>
-    </div>
+      </div>
 
-    <div class="section">
+      <div class="section">
         <h2>🛠️ Arquitectura de la Solución Técnica</h2>
         <div class="flow-container">
-            <div class="flow-item">
-                <h3>🌐 Tienda Online</h3>
-                <ul>
-                    <li>Catálogo completo de productos</li>
-                    <li>Carrito de compras intuitivo</li>
-                    <li>Búsqueda y filtros avanzados</li>
-                    <li>Gestión de promociones</li>
-                    <li>Integración con redes sociales</li>
-                </ul>
-            </div>
-            <div class="flow-item">
-                <h3>💻 Sistema POS Web</h3>
-                <ul>
-                    <li>Interfaz táctil moderna</li>
-                    <li>Funciona en tablets y computadores</li>
-                    <li>Escaneo de códigos QR/barras</li>
-                    <li>Gestión de cajeros y turnos</li>
-                    <li>Sincronización en tiempo real</li>
-                </ul>
-            </div>
-            <div class="flow-item">
-                <h3>📊 Control de Inventario</h3>
-                <ul>
-                    <li>Stock unificado online/físico</li>
-                    <li>Alertas de productos agotados</li>
-                    <li>Gestión de proveedores</li>
-                    <li>Reportes de rotación</li>
-                    <li>Predicción de demanda</li>
-                </ul>
-            </div>
-            <div class="flow-item">
-                <h3>📄 Facturación Electrónica</h3>
-                <ul>
-                    <li>Integración completa con Facto.cl</li>
-                    <li>Boletas automáticas desde POS</li>
-                    <li>Facturas online automáticas</li>
-                    <li>Cumplimiento 100% SII</li>
-                    <li>Reportes tributarios integrados</li>
-                </ul>
-            </div>
+          <div class="flow-item">
+            <h3>🌐 Tienda Online</h3>
+            <ul>
+              <li>Catálogo completo de productos</li>
+              <li>Carrito de compras intuitivo</li>
+              <li>Búsqueda y filtros avanzados</li>
+              <li>Gestión de promociones</li>
+              <li>Integración con redes sociales</li>
+            </ul>
+          </div>
+          <div class="flow-item">
+            <h3>💻 Sistema POS Web</h3>
+            <ul>
+              <li>Interfaz táctil moderna</li>
+              <li>Funciona en tablets y computadores</li>
+              <li>Escaneo de códigos QR/barras</li>
+              <li>Gestión de cajeros y turnos</li>
+              <li>Sincronización en tiempo real</li>
+            </ul>
+          </div>
+          <div class="flow-item">
+            <h3>📊 Control de Inventario</h3>
+            <ul>
+              <li>Stock unificado online/físico</li>
+              <li>Alertas de productos agotados</li>
+              <li>Gestión de proveedores</li>
+              <li>Reportes de rotación</li>
+              <li>Predicción de demanda</li>
+            </ul>
+          </div>
+          <div class="flow-item">
+            <h3>📄 Facturación Electrónica</h3>
+            <ul>
+              <li>Integración completa con Facto.cl</li>
+              <li>Boletas automáticas desde POS</li>
+              <li>Facturas online automáticas</li>
+              <li>Cumplimiento 100% SII</li>
+              <li>Reportes tributarios integrados</li>
+            </ul>
+          </div>
         </div>
-    </div>
+      </div>
 
-    <div class="section">
+      <div class="section">
         <h2>🗓️ Roadmap de Implementación</h2>
         <div class="phase-container">
-            <div class="phase">
-                <h3>ETAPA 1</h3>
-                <p><strong>Tienda Online</strong></p>
-                <p>4-6 semanas</p>
-                <p>E-commerce completo con catálogo de productos coreanos</p>
-            </div>
-            <div class="phase">
-                <h3>ETAPA 2</h3>
-                <p><strong>Facturación Digital</strong></p>
-                <p>2-3 semanas</p>
-                <p>Migración a Facto.cl y boletas electrónicas</p>
-            </div>
-            <div class="phase">
-                <h3>ETAPA 3</h3>
-                <p><strong>POS Integrado</strong></p>
-                <p>3-4 semanas</p>
-                <p>Sistema punto de venta web sincronizado</p>
-            </div>
-            <div class="phase">
-                <h3>ETAPA 4</h3>
-                <p><strong>Optimización</strong></p>
-                <p>2-3 semanas</p>
-                <p>Analytics, reportes y mejoras de rendimiento</p>
-            </div>
+          <div class="phase">
+            <h3>ETAPA 1</h3>
+            <p><strong>Tienda Online</strong></p>
+            <p>4-6 semanas</p>
+            <p>E-commerce completo con catálogo de productos coreanos</p>
+          </div>
+          <div class="phase">
+            <h3>ETAPA 2</h3>
+            <p><strong>Facturación Digital</strong></p>
+            <p>2-3 semanas</p>
+            <p>Migración a Facto.cl y boletas electrónicas</p>
+          </div>
+          <div class="phase">
+            <h3>ETAPA 3</h3>
+            <p><strong>POS Integrado</strong></p>
+            <p>3-4 semanas</p>
+            <p>Sistema punto de venta web sincronizado</p>
+          </div>
+          <div class="phase">
+            <h3>ETAPA 4</h3>
+            <p><strong>Optimización</strong></p>
+            <p>2-3 semanas</p>
+            <p>Analytics, reportes y mejoras de rendimiento</p>
+          </div>
         </div>
-    </div>
+      </div>
 
-    <div class="section">
+      <div class="section">
         <h2>💻 Stack Tecnológico Seleccionado</h2>
         <div class="tech-stack">
-            <div class="tech-item">
-                <h3>Frontend</h3>
-                <p>Next.js 14 con TypeScript</p>
-                <p>Tailwind CSS para diseño</p>
-                <p>Responsive y optimizado</p>
-            </div>
-            <div class="tech-item">
-                <h3>Backend</h3>
-                <p>NestJS con TypeScript</p>
-                <p>PostgreSQL como base de datos</p>
-                <p>API RESTful escalable</p>
-            </div>
-            <div class="tech-item">
-                <h3>Infraestructura</h3>
-                <p>VPS con Docker</p>
-                <p>SSL certificado incluido</p>
-                <p>Backup automático diario</p>
-            </div>
-            <div class="tech-item">
-                <h3>Integraciones</h3>
-                <p>Facto.cl para facturación</p>
-                <p>Webpay y Mercado Pago</p>
-                <p>APIs de logística nacional</p>
-            </div>
+          <div class="tech-item">
+            <h3>Frontend</h3>
+            <p>Next.js 14 con TypeScript</p>
+            <p>Tailwind CSS para diseño</p>
+            <p>Responsive y optimizado</p>
+          </div>
+          <div class="tech-item">
+            <h3>Backend</h3>
+            <p>NestJS con TypeScript</p>
+            <p>PostgreSQL como base de datos</p>
+            <p>API RESTful escalable</p>
+          </div>
+          <div class="tech-item">
+            <h3>Infraestructura</h3>
+            <p>VPS con Docker</p>
+            <p>SSL certificado incluido</p>
+            <p>Backup automático diario</p>
+          </div>
+          <div class="tech-item">
+            <h3>Integraciones</h3>
+            <p>Facto.cl para facturación</p>
+            <p>Webpay y Mercado Pago</p>
+            <p>APIs de logística nacional</p>
+          </div>
         </div>
-    </div>
+      </div>
 
-    <div class="section">
+      <div class="section">
         <h2>🎯 Beneficios Esperados</h2>
         <div class="benefits">
-            <div class="benefit-column">
-                <h3>Para Emporio K Market</h3>
-                <ul>
-                    <li>Ventas 24/7 sin limitaciones geográficas</li>
-                    <li>Reducción de errores en facturación</li>
-                    <li>Control total del inventario en tiempo real</li>
-                    <li>Reportes detallados para toma de decisiones</li>
-                    <li>Escalabilidad para futuro crecimiento</li>
-                    <li>Cumplimiento legal automático</li>
-                </ul>
-            </div>
-            <div class="benefit-column">
-                <h3>Para los Clientes</h3>
-                <ul>
-                    <li>Acceso a productos coreanos desde casa</li>
-                    <li>Compra de productos BTS y K-pop únicos</li>
-                    <li>Experiencia de compra moderna y segura</li>
-                    <li>Múltiples opciones de pago</li>
-                    <li>Seguimiento de pedidos en tiempo real</li>
-                    <li>Atención personalizada online</li>
-                </ul>
-            </div>
+          <div class="benefit-column">
+            <h3>Para Emporio K Market</h3>
+            <ul>
+              <li>Ventas 24/7 sin limitaciones geográficas</li>
+              <li>Reducción de errores en facturación</li>
+              <li>Control total del inventario en tiempo real</li>
+              <li>Reportes detallados para toma de decisiones</li>
+              <li>Escalabilidad para futuro crecimiento</li>
+              <li>Cumplimiento legal automático</li>
+            </ul>
+          </div>
+          <div class="benefit-column">
+            <h3>Para los Clientes</h3>
+            <ul>
+              <li>Acceso a productos coreanos desde casa</li>
+              <li>
+                Compra de productos <span class="korean-accent">BTS</span> y
+                K-pop únicos
+              </li>
+              <li>Experiencia de compra moderna y segura</li>
+              <li>Múltiples opciones de pago</li>
+              <li>Seguimiento de pedidos en tiempo real</li>
+              <li>Atención personalizada online</li>
+            </ul>
+          </div>
         </div>
-    </div>
+      </div>
 
-    <div class="cost-section">
+      <div class="cost-section">
         <h2>💰 Inversión y Estructura de Costos</h2>
         <div class="cost-grid">
-            <div class="cost-item">
-                <h3>Desarrollo Completo</h3>
-                <p><strong>$X.XXX.XXX</strong></p>
-                <small>Pago escalonado por etapas</small>
-            </div>
-            <div class="cost-item">
-                <h3>Hosting VPS</h3>
-                <p><strong>$60.000/mes</strong></p>
-                <small>Incluye SSL, backup y soporte</small>
-            </div>
-            <div class="cost-item">
-                <h3>Facto.cl</h3>
-                <p><strong>Desde $19.990/mes</strong></p>
-                <small>Según volumen de facturación</small>
-            </div>
-            <div class="cost-item">
-                <h3>Mantención</h3>
-                <p><strong>$XXX.XXX/mes</strong></p>
-                <small>Soporte técnico y actualizaciones</small>
-            </div>
+          <div class="cost-item">
+            <h3>Desarrollo Completo (Inversión Única)</h3>
+            <p><strong>Desde $1.500.000 - $3.500.000 CLP</strong></p>
+            <small
+              >Pago escalonado por etapas y funcionalidades acordadas.</small
+            >
+          </div>
+          <div class="cost-item">
+            <h3>Hosting y Servidores (Mensual)</h3>
+            <p><strong>$50.000 CLP/mes</strong></p>
+            <small
+              >Incluye VPS dedicado, SSL, backups automáticos y monitoreo
+              24/7.</small
+            >
+          </div>
+          <div class="cost-item">
+            <h3>Licencia Facto.cl (Mensual)</h3>
+            <p><strong>Desde $19.990 CLP/mes</strong></p>
+            <small
+              >Costo directo de la licencia de Facto.cl (según volumen de
+              documentos), gestionado por el cliente.</small
+            >
+          </div>
+          <div class="cost-item">
+            <h3>Servicio de Mantención y Soporte (Mensual)</h3>
+            <p><strong>Desde $150.000 - $350.000 CLP/mes</strong></p>
+            <small
+              >Soporte técnico, actualizaciones de seguridad, mejoras menores, y
+              monitoreo constante para asegurar la operatividad de la
+              plataforma.</small
+            >
+          </div>
         </div>
-    </div>
+        <div class="highlight">
+          <p>
+            Los valores finales se ajustarán en la reunión de planificación
+            según el alcance detallado y las necesidades específicas de Emporio
+            K Market.
+          </p>
+        </div>
+      </div>
 
-    <div class="highlight">
+      <div class="highlight">
         <h2>🚀 ¿Por qué Esta Solución para Emporio K Market?</h2>
-        <p>Aprovechamos el éxito consolidado de su negocio en Quilpué para expandir digitalmente sin interrumpir las operaciones actuales. 
-        Cumplimos con las normativas chilenas mientras modernizamos sus procesos, permitiendo que lleguen a más fanáticos de la cultura coreana en todo el país.</p>
-    </div>
+        <p>
+          En Subred Ingeniería, aprovechamos el éxito consolidado de su negocio
+          en Quilpué para expandir digitalmente sin interrumpir las operaciones
+          actuales. Cumplimos con las normativas chilenas mientras modernizamos
+          sus procesos, permitiendo que lleguen a más fanáticos de la cultura
+          coreana en todo el país, maximizando su alcance y eficiencia.
+        </p>
+      </div>
 
-    <div class="section">
+      <div class="section">
         <h2>📞 Próximos Pasos</h2>
         <div class="flow-container">
-            <div class="flow-item">
-                <h3>1. Reunión de Planificación</h3>
-                <ul>
-                    <li>Revisión detallada del catálogo actual</li>
-                    <li>Definición de prioridades por etapa</li>
-                    <li>Ajuste de presupuesto y cronograma</li>
-                    <li>Planificación de contenido web</li>
-                </ul>
-            </div>
-            <div class="flow-item">
-                <h3>2. Desarrollo de Prototipo</h3>
-                <ul>
-                    <li>Demo funcional de la tienda online</li>
-                    <li>Prueba de concepto del POS</li>
-                    <li>Validación de diseño y usabilidad</li>
-                    <li>Feedback y ajustes necesarios</li>
-                </ul>
-            </div>
-            <div class="flow-item">
-                <h3>3. Configuración e Inicio</h3>
-                <ul>
-                    <li>Setup de infraestructura técnica</li>
-                    <li>Creación de cuenta en Facto.cl</li>
-                    <li>Migración de datos existentes</li>
-                    <li>Inicio oficial del desarrollo</li>
-                </ul>
-            </div>
+          <div class="flow-item">
+            <h3>1. Reunión de Planificación Detallada</h3>
+            <ul>
+              <li>Revisión del catálogo actual</li>
+              <li>Definición de funcionalidades prioritarias por etapa</li>
+              <li>Ajuste de presupuesto y cronograma detallado</li>
+              <li>Planificación de contenido para la tienda online</li>
+            </ul>
+          </div>
+          <div class="flow-item">
+            <h3>2. Desarrollo de Prototipo Funcional</h3>
+            <ul>
+              <li>Presentación de demo interactiva de la tienda online</li>
+              <li>Prueba de concepto del Sistema POS</li>
+              <li>Validación de diseño, usabilidad y experiencia de usuario</li>
+              <li>
+                Recolección de feedback y realización de ajustes necesarios
+              </li>
+            </ul>
+          </div>
+          <div class="flow-item">
+            <h3>3. Configuración e Inicio Oficial</h3>
+            <ul>
+              <li>Setup de infraestructura técnica de servidores y dominios</li>
+              <li>
+                Asesoría para la creación de cuenta en Facto.cl y configuración
+              </li>
+              <li>
+                Planificación y ejecución de migración de datos existentes (si
+                aplica)
+              </li>
+              <li>Inicio formal del desarrollo de la solución completa</li>
+            </ul>
+          </div>
         </div>
+      </div>
     </div>
-</div>
+    <footer class="footer">
+      Propuesta realizada por Javier Alcayaga de Subred Ingeniería para Emporio
+      K Market.
+    </footer>
+  </body>
+</html>
